@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <table class="table container">
+        <thead>
+        <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sub Total</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr class="item">
+            <th >pruduct 1</th>
+            <td><input class="qty" type="number" value="1"></td>
+            <td class="price">1000</td>
+            <td><input class="sub-total" type="number" value="1000"></td>
+        </tr>
+
+        <tr>
+            <td colspan="3">Total</td>
+            <td><input type="number" id="total" value="30000" ></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        let items = document.querySelectorAll(".item");
+        items.forEach(function(item){
+            let qtyElement = item.querySelector(".qty"); 
+            qtyElement.addEventListener("change", function(event){
+                // let qty = +(this.value)
+                let priceValue = +(item.querySelector(".price").innerText)
+                item.querySelector(".sub-total").value = +this.value * priceValue 
+                // qry
+                setTotal()
+            })
+        })
+
+        function setTotal(){
+            let subTotals = document.querySelectorAll(".sub-total");
+            let nilaiTotal = 0;
+            subTotals.forEach((subTotal) =>{
+                nilaiTotal = nilaiTotal + +(subTotal.value)
+            })
+            document.querySelector("#total").value = nilaiTotal
+        }
+
+// returns 0, "tuna", 1, "ham", 2, "turkey", 3, "pb&j"
+        
+    </script>
+</body>
+
+
